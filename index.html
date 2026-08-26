@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Psicóloga Carol Vieira</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:wght@400;600;700;800&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --primary-dark: #2F4858;   
+      --primary-color: #5C7A89;  
+      --accent-color: #C96A3D;   
+      --accent-hover: #b55d34;   
+      --bg-color: #F7F5F2;       
+      --text-main: #2B2B2B;      
+      --text-light: #ffffff;     
+      --card-bg: #ffffff;        
+    }
+
+    body, html {
+      margin: 0; padding: 0;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-main);
+      scroll-behavior: smooth; 
+      scroll-padding-top: 100px; 
+    }
+
+    h1, h2, h3, h4 { font-family: 'Playfair Display', serif; font-weight: 600; }
+
+    /* --- CABEÇALHO --- */
+    header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 15px 5%; 
+      background-color: rgba(247, 245, 242, 0.95); 
+      box-shadow: 0 4px 15px rgba(43, 43, 43, 0.05);
+      position: sticky; top: 0; z-index: 100;
+      transition: all 0.3s ease;
+      backdrop-filter: blur(5px);
+    }
+    
+    .logo { 
+      display: flex; flex-direction: column; justify-content: center; 
+      flex: 1;
+    }
+    .logo-top {
+      display: flex; align-items: center; gap: 10px; 
+      font-family: 'Playfair Display', serif; color: var(--primary-dark); margin-bottom: 2px;
+      white-space: nowrap; font-weight: 700;
+    }
+    .logo-top span { font-size: 0.95rem; }
+    .logo-crp {
+      font-size: 11px; color: var(--primary-color); margin-left: 38px; font-family: 'Inter', sans-serif;
+      font-weight: 500; letter-spacing: 0.5px;
+    }
+    
+    nav { margin-left: 20px; }
+    nav ul { 
+      list-style: none; display: flex; gap: 25px; margin: 0; padding: 0; 
+      align-items: center; 
+    }
+    
+    nav a.nav-link { 
+      text-decoration: none; color: var(--text-main); font-size: 14px; 
+      font-weight: 500; position: relative; padding-bottom: 5px; transition: color 0.3s;
+      cursor: pointer;
+    }
+    
+    nav a.nav-link:hover { color: var(--accent-color); }
+    nav a.nav-link::after {
+      content: ''; position: absolute; width: 0; height: 2px;
+      bottom: 0; left: 0; background-color: var(--accent-color);
+      transition: width 0.3s ease;
+    }
+    nav a.nav-link:hover::after { width: 100%; }
+
+    .nav-btn-agendar {
+      background-color: var(--accent-color); color: white !important;
+      padding: 10px 22px; border-radius: 50px; font-weight: 600; font-size: 13px;
+      text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 12px rgba(201, 106, 61, 0.25);
+      white-space: nowrap; cursor: pointer;
+    }
+    .nav-btn-agendar:hover {
+      background-color: var(--accent-hover); transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(201, 106, 61, 0.35);
+    }
+
+    /* --- Hero Section --- */
+    .hero {
+      background-color: var(--primary-dark); 
+      padding: 80px 8% 0 8%;
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 50px; min-height: 550px; position: relative; color: var(--text-light);
+    }
+    
+    .hero-content { flex: 1; z-index: 2; max-width: 600px; }
+    
+    .hero-badge {
+      display: inline-block; background-color: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.4); padding: 8px 18px; border-radius: 50px;
+      font-size: 11px; font-weight: 500; letter-spacing: 1px;
+      margin-bottom: 25px; text-transform: uppercase; color: #E8A87C;
+    }
+
+    .hero-content h1 { font-size: 46px; line-height: 1.15; margin-top: 0; margin-bottom: 20px; font-weight: 700; }
+    .hero-content p { font-size: 17px; line-height: 1.7; opacity: 0.9; margin-bottom: 35px; font-weight: 300; }
+
+    .btn-principal {
+      background-color: var(--accent-color); color: var(--text-light);
+      padding: 16px 36px; border-radius: 50px; text-decoration: none;
+      font-weight: 500; font-size: 16px; box-shadow: 0 8px 25px rgba(201, 106, 61, 0.3);
+      display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s ease; border: none; cursor: pointer;
+    }
+    .btn-principal:hover { transform: translateY(-3px); box-shadow: 0 12px 30px rgba(201, 106, 61, 0.4); background-color: var(--accent-hover); }
+
+    .hero-image { flex: 1; z-index: 2; display: flex; justify-content: flex-end; position: relative; }
+    .hero-image::before {
+      content: ''; position: absolute; top: -15px; right: -15px; width: 100%; height: 100%;
+      border: 2px solid rgba(201, 106, 61, 0.4); border-radius: 20px; z-index: -1; max-width: 420px; 
+    }
+    .hero-image img { 
+      width: 100%; max-width: 420px; height: 500px; object-fit: cover; 
+      border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.4); 
+    }
+
+    .wave-container { 
+      position: relative; 
+      line-height: 0; 
+      width: 100%; 
+      overflow: hidden;
+    }
+    .wave-container svg { 
+      display: block; 
+      width: calc(100% + 2px); 
+      margin-left: -1px; 
+      height: auto; 
+      margin-bottom: -2px; 
+    }
+
+    /* --- ÁREAS DE ATENDIMENTO --- */
+    .areas-atendimento {
+      padding: 100px 8%;
+      display: flex; align-items: flex-start; justify-content: center; gap: 60px;
+      background-color: var(--bg-color);
+    }
+
+    .areas-text { flex: 1; max-width: 650px; }
+    .areas-text h2 { font-size: 38px; color: var(--primary-dark); margin-top: 0; margin-bottom: 20px; }
+    .areas-text > p { font-size: 16px; color: var(--primary-color); line-height: 1.8; margin-bottom: 40px; font-weight: 400;}
+
+    .demandas-grid { display: grid; grid-template-columns: 1fr; gap: 20px; }
+
+    .demanda-item {
+      background: var(--card-bg); padding: 25px 35px; border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(47, 72, 88, 0.05); 
+      border-left: 5px solid var(--accent-color); 
+      transition: all 0.3s ease;
+    }
+    .demanda-item:hover { 
+      box-shadow: 0 8px 30px rgba(47, 72, 88, 0.1); 
+      transform: translateX(5px); 
+    }
+
+    .demanda-content h4 { 
+      font-size: 20px; color: var(--primary-dark); margin-top: 0; 
+      margin-bottom: 10px; font-family: 'Playfair Display', serif; font-weight: 700; 
+    }
+    .demanda-content p { font-size: 14.5px; color: var(--text-main); line-height: 1.6; margin: 0; opacity: 0.85; }
+
+    .areas-image { flex: 1; max-width: 400px; position: sticky; top: 120px; display: flex; justify-content: flex-end; }
+    .areas-image img {
+      width: 100%; height: auto; border-radius: 15px; box-shadow: 0 15px 40px rgba(47, 72, 88, 0.15); object-fit: cover;
+    }
+
+    /* --- SEÇÃO: SOBRE MIM --- */
+    .sobre-mim {
+      padding: 100px 8%;
+      background-color: var(--card-bg); 
+      display: flex; align-items: center; justify-content: center; gap: 60px;
+    }
+
+    .sobre-imagem { flex: 1; max-width: 450px; position: relative; }
+    .sobre-imagem img {
+      width: 100%; height: auto; border-radius: 15px;
+      box-shadow: 0 15px 40px rgba(47, 72, 88, 0.15); object-fit: cover;
+    }
+    .sobre-imagem::after {
+      content: ''; position: absolute; bottom: -20px; left: -20px;
+      width: 60%; height: 60%; background-color: var(--primary-color);
+      opacity: 0.15; border-radius: 15px; z-index: -1;
+    }
+
+    .sobre-conteudo { flex: 1; max-width: 600px; }
+    .sobre-conteudo h2 {
+      font-size: 38px; color: var(--primary-dark); margin-top: 0; margin-bottom: 25px; line-height: 1.2;
+    }
+    .sobre-conteudo p { font-size: 16px; color: var(--text-main); line-height: 1.7; margin-bottom: 15px; opacity: 0.9; }
+
+    /* --- RODAPÉ --- */
+    footer {
+      background-color: var(--primary-dark); color: var(--text-light); padding: 60px 8% 30px 8%; text-align: center;
+    }
+    .footer-content { display: flex; flex-direction: column; align-items: center; gap: 15px; margin-bottom: 40px; }
+    .footer-logo { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 600; color: #E8A87C; }
+    .footer-crp { font-size: 12px; opacity: 0.8; letter-spacing: 1px; }
+    .social-links { display: flex; gap: 15px; margin-top: 10px; }
+    .social-icon {
+      color: var(--primary-dark); background-color: var(--text-light);
+      width: 45px; height: 45px; display: flex; align-items: center; justify-content: center;
+      border-radius: 50%; text-decoration: none; transition: all 0.3s ease; box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+    .social-icon:hover { background-color: var(--accent-color); color: var(--text-light); transform: translateY(-4px); }
+    .footer-texto { max-width: 400px; font-size: 14px; opacity: 0.8; line-height: 1.6; margin-top: 15px; font-weight: 300;}
+    .footer-bottom { border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px; font-size: 13px; opacity: 0.5; font-weight: 300;}
+
+    /* --- POPUP / MODAL OTIMIZADO --- */
+    .modal-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-color: rgba(47, 72, 88, 0.8); 
+      z-index: 1000; display: flex; align-items: center; justify-content: center;
+      visibility: hidden; opacity: 0; transition: opacity 0.3s ease, visibility 0.3s ease;
+      backdrop-filter: blur(4px);
+    }
+    .modal-overlay.active { visibility: visible; opacity: 1; }
+
+    .modal-content {
+      background-color: var(--bg-color); width: 100%; max-width: 420px;
+      padding: 40px; border-radius: 20px; box-shadow: 0 25px 60px rgba(0,0,0,0.4);
+      position: relative; transform: translateY(30px) scale(0.95); transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .modal-overlay.active .modal-content { transform: translateY(0) scale(1); }
+
+    .close-btn {
+      position: absolute; top: 15px; right: 20px; font-size: 28px; color: var(--primary-color); 
+      cursor: pointer; transition: color 0.2s; line-height: 1;
+    }
+    .close-btn:hover { color: var(--accent-color); }
+
+    .modal-content h3 { text-align: center; color: var(--primary-dark); margin-top: 0; margin-bottom: 5px; font-size: 24px; }
+    .modal-content p.subtitulo { text-align: center; font-size: 13px; color: var(--primary-color); margin-bottom: 25px; line-height: 1.5; }
+
+    .input-group { margin-bottom: 18px; display: flex; flex-direction: column; }
+    .input-group label { font-size: 13px; font-weight: 600; margin-bottom: 6px; color: var(--primary-dark); }
+    .input-group input {
+      padding: 14px; border: 1.5px solid #dcdcdc; border-radius: 10px;
+      font-family: 'Inter', sans-serif; font-size: 14px; background-color: #fff;
+      transition: all 0.3s ease; width: 100%; box-sizing: border-box; color: var(--text-main);
+    }
+    .input-group input:focus { 
+      outline: none; border-color: var(--accent-color); background-color: #fff;
+      box-shadow: 0 0 0 3px rgba(201, 106, 61, 0.15);
+    }
+    
+    .btn-submit {
+      width: 100%; background-color: #25D366; 
+      color: white; padding: 16px; border-radius: 10px; border: none; font-weight: 600;
+      cursor: pointer; transition: all 0.3s ease; margin-top: 10px; font-size: 15px;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+    }
+    .btn-submit:hover { background-color: #128C7E; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(37, 211, 102, 0.3); }
+    .carregando { opacity: 0.8; pointer-events: none; }
+
+    #mensagem-sucesso {
+      display: none; text-align: center; margin-top: 20px; padding: 15px;
+      background-color: #e8f5e9; border-radius: 12px;
+    }
+
+    /* RESPONSIVIDADE */
+    @media (max-width: 900px) {
+      header { flex-direction: column; gap: 15px; padding: 15px; }
+      .logo-top { white-space: normal; text-align: center; justify-content: center; } 
+      .logo-crp { margin-left: 0; text-align: center; }
+      nav { margin-left: 0; width: 100%; }
+      nav ul { justify-content: center; flex-wrap: wrap; gap: 15px; }
+
+      .hero { flex-direction: column; text-align: center; padding-top: 50px; padding-bottom: 50px; gap: 30px; }
+      .hero-content h1 { font-size: 36px; }
+      .hero-image { justify-content: center; }
+      .hero-image::before { display: none; }
+      
+      .areas-atendimento { flex-direction: column; padding: 60px 5%; gap: 40px; }
+      .areas-image { position: static; order: -1; max-width: 100%; justify-content: center;}
+      .areas-image img { max-width: 300px; }
+
+      .modal-content { padding: 30px 20px; width: 90%; }
+      
+      .sobre-mim { flex-direction: column; text-align: center; padding: 60px 5%; gap: 40px; }
+      .sobre-imagem::after { display: none; }
+    }
+  </style>
+</head>
+
+<body id="topo">
+
+  <header>
+    <div class="logo">
+      <div class="logo-top">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="var(--primary-color)" style="flex-shrink: 0;"><path d="M12 2l-.6 2.6c-2.8.2-5.4 1.4-7.4 3.4-2 2-3.2 4.6-3.4 7.4l2.6.6.1 1c.1.7.6 1.2 1.3 1.3l1 .1.6 2.6c2.8-.2 5.4-1.4 7.4-3.4 2-2 3.2-4.6 3.4-7.4l-2.6-.6-.1-1c-.1-.7-.6-1.2-1.3-1.3l-1-.1z"/></svg>
+        <span>Psicóloga <strong>Carol Vieira</strong></span>
+      </div>
+      <div class="logo-crp">CRP 03/28880</div>
+    </div>
+    <nav>
+      <ul>
+        <li><a onclick="rolarPara(event, 'topo')" class="nav-link">Início</a></li>
+        <li><a onclick="rolarPara(event, 'atuacao')" class="nav-link">Áreas de Atuação</a></li>
+        <li><a onclick="rolarPara(event, 'sobre')" class="nav-link">Sobre mim</a></li>
+        <li><a onclick="abrirModal(event)" class="nav-btn-agendar">Agendar Sessão</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">Terapia Online</div>
+      
+      <h1>Para você que quer entender melhor o que sente.</h1>
+      
+      <p>Um espaço para você organizar seus pensamentos, compreender suas emoções e lidar com o que sente de forma mais leve e consciente. A terapia aqui é prática, mas também acolhedora (para fazer sentido na sua vida real).</p>
+      
+      <button onclick="abrirModal(event)" class="btn-principal">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.052 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+        Agendar por WhatsApp
+      </button>
+    </div>
+    
+    <div class="hero-image">
+      <img src="https://i.postimg.cc/FRW02fQN/Whats-App-Image-2026-04-25-at-01-08-30.jpg" alt="Retrato da Psicóloga Carol Vieira">
+    </div>
+  </section>
+
+  <div class="wave-container" style="background-color: var(--primary-dark);">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="fill: var(--bg-color);">
+      <path d="M0,60 C320,120 420,0 720,60 C1020,120 1120,0 1440,60 L1440,120 L0,120 Z"></path>
+    </svg>
+  </div>
+
+  <section id="atuacao" class="areas-atendimento">
+    <div class="areas-text">
+      <h2>Demandas e Especialidades</h2>
+      <p>Com base na Terapia Cognitivo-Comportamental (TCC), meu trabalho foca em intervenções práticas e acolhedoras para ajudar você a lidar com os desafios que impactam sua saúde mental e qualidade de vida. Atuo principalmente nas seguintes áreas:</p>
+      
+      <div class="demandas-grid">
+        <div class="demanda-item">
+          <div class="demanda-content">
+            <h4>Ansiedade</h4>
+            <p>A ansiedade pode se manifestar por meio de preocupações frequentes, dificuldade para relaxar, sensação constante de alerta e pensamentos antecipatórios. Na terapia, trabalhamos o reconhecimento dos fatores que mantêm esse ciclo, desenvolvendo estratégias para lidar com as situações do dia a dia de forma mais equilibrada.</p>
+          </div>
+        </div>
+        <div class="demanda-item">
+          <div class="demanda-content">
+            <h4>Depressão</h4>
+            <p>Momentos de desânimo, perda de interesse, autocrítica intensa e dificuldades para realizar atividades cotidianas podem impactar diferentes áreas da vida. O acompanhamento psicológico oferece um espaço de acolhimento e compreensão, auxiliando na construção de recursos para enfrentar essas dificuldades e retomar gradualmente atividades significativas.</p>
+          </div>
+        </div>
+        <div class="demanda-item">
+          <div class="demanda-content">
+            <h4>Obesidade e Emagrecimento</h4>
+            <p>Minha atuação nessa área é voltada para os aspectos psicológicos envolvidos na alimentação e no processo de mudança de hábitos. Trabalhamos temas como alimentação emocional, compulsão alimentar, autocrítica, imagem corporal e dificuldades relacionadas à manutenção de comportamentos saudáveis.</p>
+          </div>
+        </div>
+        <div class="demanda-item">
+          <div class="demanda-content">
+            <h4>Regulação Emocional</h4>
+            <p>As emoções fazem parte da experiência humana, mas nem sempre é fácil compreendê-las ou lidar com elas. A terapia pode ajudar no desenvolvimento de habilidades para identificar emoções, compreender suas funções e responder a elas de forma mais consciente e alinhada aos seus valores.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="areas-image">
+      <img src="https://i.postimg.cc/YqLwM8p2/Whats-App-Image-2026-04-25-at-13-09-03.jpg" alt="Psicóloga Carol Vieira em Atendimento">
+    </div>
+  </section>
+
+  <div class="wave-container" style="background-color: var(--bg-color);">
+    <svg viewBox="0 0 1440 120" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg" style="fill: var(--card-bg);">
+      <path d="M0,60 C320,120 420,0 720,60 C1020,120 1120,0 1440,60 L1440,120 L0,120 Z"></path>
+    </svg>
+  </div>
+
+  <section id="sobre" class="sobre-mim">
+    <div class="sobre-imagem">
+      <img src="https://i.postimg.cc/mkxT2sM5/Whats-App-Image-2026-04-25-at-02-41-01.jpg" alt="Psicóloga Carol Vieira">
+    </div>
+    
+    <div class="sobre-conteudo">
+      <h2>Psicóloga Carol Vieira</h2>
+      <p>Sou psicóloga clínica e atendo preferencialmente mulheres adultas que desejam compreender melhor suas emoções, reduzir a ansiedade e se sentirem mais seguras em si mesmas.</p>
+      <p>Trabalho com a Terapia Cognitivo-Comportamental (TCC), focando em te ajudar a identificar padrões, organizar pensamentos e desenvolver formas mais saudáveis de lidar com o que você sente, de forma prática e aplicável no seu dia a dia.</p>
+      <p>Acredito que a terapia é um espaço de acolhimento, mas também de direcionamento.</p>
+      <p>Se você se sente sobrecarregada, insegura ou perdida em meio às próprias emoções, estou aqui para te ajudar a construir mais clareza, equilíbrio e leveza.</p>
+      <p style="font-weight: 500; color: var(--accent-color); margin-top: 25px;">Vamos trilhar esse caminho juntas?</p>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-logo">Psicóloga Carol Vieira</div>
+      <div class="footer-crp">CRP 03/28880</div>
+      
+      <p class="footer-texto">Acompanhe o meu trabalho no Instagram para mais conteúdos de apoio e informações sobre saúde mental.</p>
+      
+      <div class="social-links">
+        <a href="https://www.instagram.com/carolvieirapsi?igsh=MXJ4YThxeXBoazAzaQ==" target="_blank" class="social-icon" aria-label="Aceder ao Instagram">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+          </svg>
+        </a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 Carol Vieira. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <div class="modal-overlay" id="modalAgendamento">
+    <div class="modal-content">
+      <span class="close-btn" onclick="fecharModal()">&times;</span>
+      
+      <h3>Agendar Consulta</h3>
+      <p class="subtitulo">Preencha rapidamente para falarmos pelo WhatsApp e encontrarmos o melhor horário para si.</p>
+
+      <form id="meuFormulario" onsubmit="enviarDados(event)">
+        <div class="input-group">
+          <label for="nome">Como deseja ser chamada?</label>
+          <input type="text" id="nome" required placeholder="Ex: Maria Silva">
+        </div>
+        <div class="input-group">
+          <label for="telefone">O seu WhatsApp (com DDD)</label>
+          <input type="tel" id="telefone" required placeholder="(11) 99999-9999">
+        </div>
+        <div class="input-group">
+          <label for="idade">Sua Idade</label>
+          <input type="number" id="idade" required placeholder="Ex: 28">
+        </div>
+        
+        <button type="submit" id="btnSubmit" class="btn-submit">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.052 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg>
+          Enviar e Falar no WhatsApp
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // Funções de rolagem e controle do Modal visual (mantidas intactas)
+    function rolarPara(event, idSecao) {
+      event.preventDefault(); 
+      const elemento = document.getElementById(idSecao);
+      if (elemento) {
+        elemento.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    function abrirModal(e) {
+      if(e) e.preventDefault();
+      document.getElementById('modalAgendamento').classList.add('active');
+    }
+
+    function fecharModal() {
+      document.getElementById('modalAgendamento').classList.remove('active');
+      setTimeout(() => {
+        document.getElementById('meuFormulario').reset();
+        document.getElementById('btnSubmit').innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.888-.788-1.489-1.761-1.663-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51a12.8 12.8 0 0 0-.57-.01c-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.82 9.82 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.052 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg> Enviar e Falar no WhatsApp';
+        document.getElementById('btnSubmit').classList.remove("carregando");
+      }, 300); 
+    }
+
+    window.onclick = function(event) {
+      let modal = document.getElementById('modalAgendamento');
+      if (event.target == modal) {
+        fecharModal();
+      }
+    }
+
+    // AQUI ESTÁ A NOVA LÓGICA DO FORMULÁRIO (FRONT-END PURO)
+    function enviarDados(event) {
+      // 1. Evita que a página recarregue ao clicar em enviar
+      event.preventDefault(); 
+      
+      // 2. Animação simples de carregamento no botão
+      const btn = document.getElementById('btnSubmit');
+      btn.innerText = "A redirecionar...";
+      btn.classList.add("carregando");
+
+      // 3. Captura os valores que o usuário digitou
+      const nome = document.getElementById('nome').value;
+      const telefone = document.getElementById('telefone').value;
+      const idade = document.getElementById('idade').value;
+
+      // 4. Monta a mensagem personalizada (o \n serve para pular linha no WhatsApp)
+      // *ATUALIZAÇÃO: Alterado de "Ana Carolina" para "Carol"*
+      const textoMensagem = `Olá, Carol! Gostaria de agendar uma consulta.\n\nNome: ${nome}\nIdade: ${idade} anos\nTelefone: ${telefone}`;
+
+      // 5. Codifica o texto para que a URL entenda espaços e acentos
+      const textoCodificado = encodeURIComponent(textoMensagem);
+
+      // 6. Define o número do WhatsApp (coloquei o que estava no seu código original)
+      const numeroWhatsApp = "5511934622275";
+
+      // 7. Cria o link final da API do WhatsApp
+      const linkWpp = `https://wa.me/${numeroWhatsApp}?text=${textoCodificado}`;
+
+      // 8. Dá um tempinho de 1.5 segundos para o usuário ver que o clique funcionou, e então redireciona
+      setTimeout(function() {
+          window.location.href = linkWpp;
+      }, 1500);
+    }
+  </script>
+
+</body>
+</html>
